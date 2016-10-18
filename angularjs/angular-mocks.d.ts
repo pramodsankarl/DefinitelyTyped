@@ -119,7 +119,7 @@ declare namespace angular {
     interface IComponentControllerService {
       // TBinding is an interface exposed by a component as per John Papa's style guide
       // https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md#accessible-members-up-top
-      <T, TBinding>(componentName: string, locals: { $scope: IScope, [key: string]: any }, bindings?: TBinding, ident?: string): T;
+      <T, TBinding>(componentName: string, locals: { $scope?: IScope, [key: string]: any }, bindings?: TBinding, ident?: string): T;
     }
 
 
@@ -191,14 +191,14 @@ declare namespace angular {
           */
 
         expectHEAD(url: string | RegExp | ((url: string) => boolean), headers?: Object, keys?: Object[]): mock.IRequestHandler;
-        
+
         /**
           * Creates a new request expectation for JSONP requests.
           * Throws a preformatted error if expectation(s) don't match supplied string, regular expression, or if function returns false.
           * Returns an object with respond method that controls how a matched request is handled.
           * @param url HTTP url string, regular expression or function that receives a url and returns true if the url matches the current expctation.
           * @param keys Array of keys to assign to regex matches in the request url.
-          */        
+          */
         expectJSONP(url: string | RegExp | ((url: string) => boolean), keys?: Object[]): mock.IRequestHandler;
 
         /**
